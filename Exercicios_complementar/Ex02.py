@@ -1,46 +1,25 @@
-while True:
-    valor = input("Informe o primeiro valor: ")
-    valor2 = input("Informe o segundo valor: ")
-    operadores = input("Qual o operador (+-/*): ")
+valor = input("Primeiro valor: ").replace(",", ".")
+valor2 = input("Segundo valor: ").replace(",", ".")
 
+valor_float = 0
+valor2_float = 0
+valor_valido = None
+
+try:
+    valor_float = float(valor)
+    valor2_float = float(valor2)
+    valor_valido = True
+except:
     valor_valido = None
-    valor_convertido = 0
-    valor2_convertido = 0
 
-    try:
-        valor_convertido = float(valor)
-        valor2_convertido = float(valor2)
-        valor_valido = True
-    except:
-        valor_valido = None
-
-    if valor_valido is None:
-        print("Um dos valores são inválidos")
-
-    operadores_permitidos = '+-/*'
-    
-    if operadores not in operadores_permitidos:
-        print("Operador inválido!")
-
-    if len(operadores) > 1:
-        print("Digite apenas UM operador")
-
-    print("Realizando os calculos, veja os resultados abaixo")
-    if operadores == '+':
-        print(f"{valor} + {valor2} = {valor_convertido + valor2_convertido:.2f}")
-    elif operadores == '-':
-        print(f"{valor} - {valor2} = {valor_convertido - valor2_convertido:.2f}")
-    elif operadores == '*':
-        print(f"{valor} * {valor2} = {valor_convertido * valor2_convertido:.2f}")
-    elif operadores == '/':
-        print(f"{valor} / {valor2} = {valor_convertido / valor2_convertido:.2f}")
-    elif operadores == '' or ' ':
-        print("Operador inválido!")
-        continue
-    else:
-        print("Não era para ter chegado aqui!")
-
-    opcao_sair_programa = input("Você quer sair? ").lower().startswith('s')
-
-    if opcao_sair_programa:
-        break
+if valor_valido is True:
+    soma = valor_float + valor2_float
+    subt = valor_float - valor2_float
+    multi = valor_float * valor2_float
+    divisao = valor_float / valor2_float
+    print(f"SOMA = {soma:.2f}")
+    print(f"SUBTRAÇÃO = {subt:.2f}")
+    print(f"MULTIPLICAÇÃO = {multi:.2fDD}")
+    print(f"DIVISÃO = {divisao:.2f}")
+else:
+    print("Um dos valores são inválidos")
