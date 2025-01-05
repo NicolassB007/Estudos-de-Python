@@ -1,54 +1,47 @@
-# Em andamento
+import os
 print(10 * "---")
 print("PALAVRA SECRETA".center(30))
 print(10 * "---")
 
-palavra_secreta = 'Maçã'.casefold()
-tamanho_palavra_secreta = len(palavra_secreta)
+palavra_secreta = 'Maçã'
 
+letras_corretas = ''
 letra = ''
-print("PALAVRA SECRETA -> ", tamanho_palavra_secreta * '*')
 tentativas = 0
+palavra_final = ''
 
 while True:
-    palavra_usuario = input("Informe uma letra: ").casefold()
-    tamanho_palavra_usuario = len(palavra_usuario)
+    letra_usuario = input("Informe uma letra: ")
 
     # Checando se a letra informada foi APENAS uma
-    if tamanho_palavra_usuario > 1:
+    if len(letra_usuario) > 1:
         print("APENAS UMA LETRA!")
         print("\n")
         continue
 
     # Checando se a letra informada realmente é uma LETRA
-    if palavra_usuario.isalpha():
-        letra = palavra_usuario
+    if letra_usuario.isalpha():
+        letra = letra_usuario
     else:
         print("LETRA INVÁLIDA")
         print("\n")
         continue
-    
-    indice_palavra = 0
-    letra_correta = ''
-    while indice_palavra < tamanho_palavra_secreta:
-        if letra == palavra_secreta[indice_palavra]:
-            letra_correta = letra
-        indice_palavra += 1
 
-    contador = 0
-    if tentativas == 0:
-        nova_palavra = ''
-    while contador < tamanho_palavra_secreta:
-        if letra_correta == palavra_secreta[contador]:
-            nova_palavra += letra_correta
+    if letra in palavra_secreta:
+        letras_corretas += letra
+
+    palavra_formada = ''
+    for letra_secreta in palavra_secreta:
+        if letra_secreta in letras_corretas:
+            palavra_formada += letra_secreta
         else:
-            nova_palavra += '*'
-        contador += 1
-
-    indice_para_compararar = 0
-    palavra_final = nova_palavra
-    if tentativas > 0:
-        while indice_para_compararar < tamanho_palavra_secreta:
-            print("Entrou no loop")
-            indice_para_compararar += 1
+            palavra_formada += '*'
+    print(palavra_formada)
+    if palavra_formada == palavra_secreta:
+        os.system('cls')
+        print("PARABÉNS, VOCÊ ACERTOU!'")
+        print(f"A palavra é {palavra_formada}")
+        print(f"TENTATIVAS = {tentativas}")
+        letras_corretas = ''
+        tentativas = 0
     tentativas += 1
