@@ -34,17 +34,21 @@ while True:
         if letra == palavra_secreta[indice_palavra]:
             letra_correta = letra
         indice_palavra += 1
-    
+
+    contador = 0
     if tentativas == 0:
         nova_palavra = ''
-    else:
-        palavra_final = nova_palavra
-        nova_palavra = ''
-    contador = 0
     while contador < tamanho_palavra_secreta:
         if letra_correta == palavra_secreta[contador]:
             nova_palavra += letra_correta
         else:
             nova_palavra += '*'
         contador += 1
+
+    indice_para_compararar = 0
+    palavra_final = nova_palavra
+    if tentativas > 0:
+        while indice_para_compararar < tamanho_palavra_secreta:
+            print("Entrou no loop")
+            indice_para_compararar += 1
     tentativas += 1
