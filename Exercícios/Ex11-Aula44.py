@@ -1,47 +1,32 @@
 import os
-print(10 * "---")
-print("PALAVRA SECRETA".center(30))
-print(10 * "---")
-
-palavra_secreta = 'Maçã'
-
+palavra_secreta = 'Programação'
 letras_corretas = ''
-letra = ''
 tentativas = 0
-palavra_final = ''
-
 while True:
-    letra_usuario = input("Informe uma letra: ")
+    palavra_final = ''
+    letra_usuario = input("Digite uma letra: ")
 
-    # Checando se a letra informada foi APENAS uma
     if len(letra_usuario) > 1:
         print("APENAS UMA LETRA!")
-        print("\n")
         continue
 
-    # Checando se a letra informada realmente é uma LETRA
-    if letra_usuario.isalpha():
-        letra = letra_usuario
-    else:
-        print("LETRA INVÁLIDA")
-        print("\n")
+    if letra_usuario.isnumeric():
+        print("Apenas letras!")
         continue
 
-    if letra in palavra_secreta:
-        letras_corretas += letra
-
-    palavra_formada = ''
+    if letra_usuario in palavra_secreta:
+        letras_corretas += letra_usuario
+    
     for letra_secreta in palavra_secreta:
         if letra_secreta in letras_corretas:
-            palavra_formada += letra_secreta
+            palavra_final += letra_secreta
         else:
-            palavra_formada += '*'
-    print(palavra_formada)
-    if palavra_formada == palavra_secreta:
-        os.system('cls')
-        print("PARABÉNS, VOCÊ ACERTOU!'")
-        print(f"A palavra é {palavra_formada}")
-        print(f"TENTATIVAS = {tentativas}")
-        letras_corretas = ''
-        tentativas = 0
+            palavra_final += '*'
+    print(palavra_final)
+    if palavra_final == palavra_secreta:
+        os.system("cls")
+        print("PARABÉNS! VOCÊ CONSEGUIU!")
+        print(f"A PALAVRA ERA {palavra_secreta}")
+        print(f"TENTATIVAS: {tentativas}x")
+        break
     tentativas += 1
