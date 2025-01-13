@@ -12,8 +12,6 @@ cpf_convertido_com_sucesso = None
 numeros_do_cpf = []
 resultado_multiplicacao = [] # Resultados da multiplicação da lista numeros_do_cpf #                              com numeros de 10 até 2
 soma_total_de_todos_os_numeros_multiplicados = []
-cpf_final = []
-cpf_com_ponto = ''
 contador = 1
 
 while True:
@@ -31,8 +29,6 @@ while True:
     elif len(cpf) == 9:
         for numero_cpf in cpf:
             try:
-                if cpf[0] == 0:
-                    continue
                 cpf_convertido_para_int = int(numero_cpf)
                 cpf_convertido_com_sucesso = True
             except:
@@ -87,6 +83,5 @@ while True:
         segundo_digito_cpf = modulo_soma_vezes_dez if modulo_soma_vezes_dez <= 9 else 0
 
         print(f"O SEGUNDO DIGITO DO CPF É {segundo_digito_cpf}")
-        os.system("cls")
 
         numeros_do_cpf.append(segundo_digito_cpf)
