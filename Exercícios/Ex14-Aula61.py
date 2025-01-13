@@ -7,16 +7,13 @@ primeiro_digito_cpf = 0 # Esse valor não é o final!!
 segundo_digito_cpf = 0 # Esse valor não é o final!!
 modulo_soma_vezes_dez = 0
 
-cpf_com_ponto = ''
-
 cpf_convertido_com_sucesso = None
 
 numeros_do_cpf = []
 resultado_multiplicacao = [] # Resultados da multiplicação da lista numeros_do_cpf #                              com numeros de 10 até 2
 soma_total_de_todos_os_numeros_multiplicados = []
 cpf_final = []
-
-
+cpf_com_ponto = ''
 contador = 1
 
 while True:
@@ -26,7 +23,7 @@ while True:
 
     if len(cpf) > 9:
         os.system("cls")
-        print("Você informou mais que 8 digitos do cpf!")
+        print("Você informou mais que 9 digitos do cpf!")
         continue
     elif len(cpf) < 0:
         os.system("cls")
@@ -34,6 +31,8 @@ while True:
     elif len(cpf) == 9:
         for numero_cpf in cpf:
             try:
+                if cpf[0] == 0:
+                    continue
                 cpf_convertido_para_int = int(numero_cpf)
                 cpf_convertido_com_sucesso = True
             except:
@@ -65,31 +64,29 @@ while True:
         numeros_do_cpf.append(primeiro_digito_cpf)
         print(f"PRIMEIRO DIGITO É {primeiro_digito_cpf}")
 
-        # Reutilizando a estrutura anterior para conseguir o segundo digito    
-        multiplicacao = 0
-        multiplicacao = 1 * numeros_do_cpf[-1]
-        resultado_multiplicacao.append(multiplicacao)
+        # Reutilizando a estrutura anterior para conseguir o segundo digito
+        resultado_multiplicacao = [] # Zerando a lista de resultados da #                            multiplicação de todos os números do cpf    
 
+        indice = 0
+        for contagem_regressiva in range(11, 1, -1):
+            multiplicacao = numeros_do_cpf[indice] * contagem_regressiva
+            resultado_multiplicacao.append(multiplicacao)
+            indice += 1
 
+        indice = 0
+        soma = 0
+        for numeros in resultado_multiplicacao:
+            soma += numeros
 
+        resultado_soma_vezes_dez = 0 # Zerando o valor da variável
+        resultado_soma_vezes_dez = soma * 10
 
+        modulo_soma_vezes_dez = 0 # Zerando o valor da variável
+        modulo_soma_vezes_dez = resultado_soma_vezes_dez % 11
 
+        segundo_digito_cpf = modulo_soma_vezes_dez if modulo_soma_vezes_dez <= 9 else 0
 
+        print(f"O SEGUNDO DIGITO DO CPF É {segundo_digito_cpf}")
+        os.system("cls")
 
-
-    # for ponto in cpf:
-    #     cpf_com_ponto = ponto
-    #     print(cpf_com_ponto, end='')
-    #     tamanho_cpf += 1
-
-    #     if tamanho_cpf == 9:
-    #         print('-', end='')
-    #         continue
-
-    #     if contador == 3:
-    #         if tamanho_cpf >= 9:
-    #             continue
-    #         print('.', end='')
-    #         contador = 0
-    #     contador += 1
-    # print('\n')
+        numeros_do_cpf.append(segundo_digito_cpf)
