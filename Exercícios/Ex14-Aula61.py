@@ -1,11 +1,11 @@
 import os
-# EM ANDAMENTO
 cpf_convertido_para_int = 0
 tamanho_cpf = 0
 resultado_soma_vezes_dez = 0 # Esse valor é apenas para definir a variável
 primeiro_digito_cpf = 0 # Esse valor não é o final!!
 segundo_digito_cpf = 0 # Esse valor não é o final!!
 modulo_soma_vezes_dez = 0
+cpf_final = ''
 
 cpf_convertido_com_sucesso = None
 
@@ -85,3 +85,24 @@ while True:
         print(f"O SEGUNDO DIGITO DO CPF É {segundo_digito_cpf}")
 
         numeros_do_cpf.append(segundo_digito_cpf)
+
+        contador = 1
+        for numeros in numeros_do_cpf:
+            cpf_final += str(numeros)
+            if len(cpf_final.replace('.', '')) == 9:
+                cpf_final += '-'
+                contador = 0
+                continue
+            if contador == 3:
+                cpf_final += '.'
+                contador = 0
+            contador += 1
+
+        os.system("cls")
+        print(f"SEU CPF É {cpf_final}")
+
+        # Zerando as variáveis
+        cpf_final = ''
+        numeros_do_cpf = []
+        resultado_multiplicacao = []
+        soma_total_de_todos_os_numeros_multiplicados = []
