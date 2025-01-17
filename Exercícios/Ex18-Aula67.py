@@ -22,4 +22,6 @@ except:
     print("Informe um valor válido!")
 
 
-print(F"O VALOR {par_or_impar(valor_int)}")
+# print(f"O VALOR {par_or_impar(valor_int)}")
+
+# print(par_or_impar(valor_int))
