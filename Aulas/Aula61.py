@@ -15,7 +15,7 @@ soma(x=2, y=4)
 
 # Não é possível ter um argumento nomeado no meio
 # Ex.:
-soma(2, y=3, 6) # INVÁLIDO!
+# soma(2, y=3, 6) # INVÁLIDO!
 
 # Todos os argumentos que vem depois de um argumento nomeado tem que 
 # ser nomeado
