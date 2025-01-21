@@ -1,14 +1,14 @@
 import random
-# Em andamento
+# Em andamento, no final
 
-while True: 
+while True:
     numbers_cpf_list = []
     def create_cpf():
         for counter in range(0, 9):
             numbers = random.randint(0, 9)
             numbers_cpf_list.append(numbers)
         return numbers_cpf_list
-    
+
     def first_number(cpf):
 
         def multiplication_numbers_in_cpf():
@@ -27,7 +27,7 @@ while True:
 
             for number in multiplied_numbers:
                 addition += number
-            
+
             addition_ten_times = addition * 10
             module_result_addition = addition_ten_times % 11
 
@@ -49,33 +49,30 @@ while True:
                 index += 1
 
             return list_numbers_multiplied
-        
+
         def second_calculate():
             multiplied_numbers = multiplying_numbers()
             addition = 0
 
             for number in multiplied_numbers:
                 addition += number
-            
+
             addition_ten_times = addition * 10
             module_result_addition = addition_ten_times % 11
 
             result_second_number = module_result_addition if module_result_addition <= 9 else 0
 
-            numbers_cpf_list.append(second_number)
+            numbers_cpf_list.append(result_second_number)
 
             return result_second_number
-            
+        
         return second_calculate
 
+    cpf_created = create_cpf()
+    first_cpf_number = first_number(cpf_created)
+    second_cpf_number = second_number(cpf_created)
 
-
-    cpf_created = create_cpf
-    first_number_in_cpf = first_number(cpf_created)
-    second_number_in_cpf = second_number(cpf_created)
-
-    print(cpf_created())
-    print(first_number_in_cpf())
-    print(second_number_in_cpf())
-
+    print(f"PRIMEIRO NÚMERO DO CPF = {first_cpf_number()}")
+    print(f"SEGUNDO NÚMERO DO CPF = {second_cpf_number()}")
+    print(numbers_cpf_list)
     break
