@@ -3,6 +3,7 @@ student_information = {}
 while True:
     student_name = input("Informe o nome do aluno: ").capitalize()
     age_student = input("Informe a idade do aluno: ")
+    note_student = input("Informe a nota do aluno: ")
 
 
     student_name_valid = None
@@ -15,6 +16,17 @@ while True:
         print("O nome do aluno informado é inválido!")
         print("Verifique o nome e informe novamente por gentileza")
         continue
+
+    while True:
+        note_student_valid = None
+        note_student_double = 0
+
+        try:
+            note_student_double = float(note_student)
+            note_student_valid = True
+            break
+        except ValueError:
+            age_student_valid = None
 
     while True:
         age_student_valid = None
@@ -39,6 +51,11 @@ while True:
     else:
         student_information["idade"].append(age_int_student)
 
+    if "nota" not in student_information:
+        student_information["nota"] = [note_student_double]
+    else:
+        student_information["nota"].append(note_student_double)
+
     esc = input("Você quer informar mais algum nome? (s/n): ").lower()
     esc_valid = None
 
@@ -50,5 +67,15 @@ while True:
 
 print("ALUNOS: ")
 
-for name, age in student_information.items():
-    print(name, age)
+for name in student_information["nome"]:
+    print(f"Nome: {name} -- ", end=' ')
+
+print("\n")
+
+for age in student_information["idade"]:
+    print(f"Idade: {age} --", end=' ')
+
+print("\n")
+
+for note in student_information["nota"]:
+    print(f"Nota: {note} -- ", end=' ')
