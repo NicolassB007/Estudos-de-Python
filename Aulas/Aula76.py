@@ -20,18 +20,36 @@
 # - eles não tem indexes;
 # - eles não garantem ordem;
 # - eles são iteráveis (for, in, not in)
-# li = [1, 2, 3, 3, 3, 3, 3, 3]
-# s1 = {"Nicolas", 3, 4, 1}
-# l2 = list(s1)
-# print(s1)
-# for numeros in s1:
-#     print(numeros)
 
 # Métodos úteis:
 # add, update, clear, discard
+# s1 = set()
+# s1.add('Nicolas')
+# s1.add(3)
+# s1.add(1)
+# s1.update(("Olá Mundo!", 1, 2, 3))
+# s1.clear()
+# s1.discard(1)
+# print(s1)
+
 
 # Operadores úteis:
 # união | união (union) - Une 
 # intersecção & (intersection) - itens presentes em ambos
 # diferença - itens presentes apenas no set da esquerda
 # diferença simétrica ^ - itens que NÃO estão em ambos
+
+s1 = {1, 2, 3, 4}
+s2 = {2, 3, 4, 5, 6}
+
+s3 = s1 | s2 # Unindo os sets
+print(s3)
+
+s3 = s1 & s2 # Intersecção
+print(s3) 
+
+s3 = s1 - s2 # Diferença
+print(s3)
+
+s3 = s1 ^ s2 # Diferença simétrica
+print(s3)
