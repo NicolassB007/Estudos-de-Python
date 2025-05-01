@@ -15,7 +15,7 @@ def cria_multiplicador(multiplicador):
 #     lambda m: lambda n: n * m, 2
 # ) // Não é muito recomendado
 
-print(duplica(5))
+# print(duplica(5))
 
 # print(
 #     executa(
